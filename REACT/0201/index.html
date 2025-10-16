@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React para Iniciantes</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app">App</div>
+    <script type="text/babel">
+
+        const Button = () => {
+            const [total, setTotal] = React.useState(0);
+
+            return <button onClick={() => setTotal(total + 1)}>Adicionar {total}</button>
+        }
+
+        const MainNav = () => {
+            return <nav>
+                <a href="#">Link 1</a>
+                <a href="#">Link 1</a>
+            </nav>
+        }
+
+        const Produtos = () => {
+            const produto1 = "Camisa";
+            const produto2 = "Bermuda";
+
+            function handleClick(event) {
+                console.log('Comprou: ' + event.target.innerText)
+            }
+
+            return <div>
+                <button onClick={handleClick}>{produto1} - {Math.random() * 1000}</button>
+                <button onClick={handleClick}>{produto2}</button>
+            </div>
+        }
+
+        const Compras = () => {
+            const [contar, setContar] = React.useState(3);
+
+            function handleClick() {
+                setContar(contar + 1)
+
+            }
+            return <div>
+                <button onClick={handleClick}>Comprar {contar}</button>
+                <p>Total: {contar}</p>
+                <p>Total: {contar * 250}</p>
+            </div>
+        }
+
+        const App = () => {
+            return (
+                <div>
+                    <MainNav />
+                    <Produtos />
+                    <Button />
+                    <Compras />
+                </div>
+            );
+        }
+
+
+        ReactDOM.render(<App />, document.getElementById('app'));
+    </script>
+</body>
+
+</html>

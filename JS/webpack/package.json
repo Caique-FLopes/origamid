@@ -1,0 +1,24 @@
+{
+  "name": "1003-eslint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production ./js/script.js -o ./main",
+    "dev": "webpack --mode development ./js/script.js -o ./main --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "eslint-config-prettier": "^6.11.0",
+    "jquery": "^3.7.1",
+    "lodash": "^4.17.21"
+  }
+}

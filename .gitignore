@@ -1,0 +1,83 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Logs e temporários
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*.swn
+
+# Diretórios de dependências
+**/node_modules/
+vendor/
+__pycache__/
+.env
+.env.*
+*.env.*
+!.env.example
+
+# Cache de pacotes
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.cache/
+.pnpm-store/
+.python-version
+
+# Compilação e build
+dist/
+build/
+out/
+coverage/
+public/storage
+storage/*.key
+
+# IDEs e editores
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Arquivos de sistema
+*.pid
+*.seed
+*.pid.lock
+
+# Banco de dados
+*.sqlite
+*.sqlite3
+*.db
+*.sql
+*.dump
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# Laravel específico
+.phpunit.result.cache
+storage/
+bootstrap/cache/
+
+# Next.js / React / Angular
+.next/
+out/
+.eslintcache
+
+# Outros
+*.tgz
+*.zip
+*.7z
+*.tar
+*.gz
+
+# Arquivos pessoais
+*.pem
+*.crt
+*.key
+*.pfx
