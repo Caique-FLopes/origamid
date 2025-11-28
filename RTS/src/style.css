@@ -71,6 +71,7 @@ ul {
 
 .container {
   display: grid;
+  grid-template-columns: 240px auto;
   padding: var(--gap);
   gap: var(--gap);
 }
@@ -99,4 +100,44 @@ ul {
 .venda a {
   text-decoration: none;
   color: inherit;
+}
+
+.sidenav {
+  position: sticky;
+  top: 2rem;
+}
+
+.sidenav li {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-s);
+}
+
+.sidenav li span {
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--color-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--gap);
+}
+
+.sidenav li a {
+  flex: 1;
+  font-size: 1.125rem;
+  text-decoration: none;
+  color: var(--color-1);
+  padding: var(--gap-s);
+  transition: ease-in-out 0.5s;
+}
+
+.sidenav li:hover span {
+  background-color: var(--color-3);
+}
+
+.daterange {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
 }
