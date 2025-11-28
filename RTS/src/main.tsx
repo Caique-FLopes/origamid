@@ -1,11 +1,10 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./main.css";
-import AppBasico from "./basico/App.tsx";
-import AppHooks from "./hooks/App.tsx";
+import { StrictMode } from "react";
+import App from "./App";
+import "./style.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AppHooks />
+    <App />
   </StrictMode>
 );

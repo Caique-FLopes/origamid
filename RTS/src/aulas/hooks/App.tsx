@@ -5,9 +5,10 @@ import Ref from "./Ref";
 import CustomHook from "./customHook";
 import ExercicioCustomHook from "./ExercicioCustomHook";
 import Context from "./Context";
+import { Form } from "./Form";
 
 function App() {
-  return <Context />;
+  return <Form />;
 }
 
 export default App;
