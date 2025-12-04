@@ -1,9 +1,13 @@
 import React, { type PropsWithChildren } from "react";
 import { useNavigate, type NavigateFunction } from "react-router-dom";
-interface ILoginContext {
+
+type StateLogin = {
   username: string;
   setUsername: React.Dispatch<React.SetStateAction<string>>;
   password: string;
+};
+export interface ILoginContext {
+  stateLogin: StateLogin;
   setPassword: React.Dispatch<React.SetStateAction<string>>;
   token: string | null;
   setToken: React.Dispatch<React.SetStateAction<string | null>>;
@@ -23,8 +27,11 @@ export const useLoginContext = () => {
 
 export const LoginProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const navigate = useNavigate();
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+
+  const [stateLogin, setStateLogin] = React.useReducer(formReducer, {
+    username: "",
+    password: "",
+  });
 
   const [loading, setLoading] = React.useState(false);
   const [token, setToken] = React.useState<string | null>(null);
@@ -71,13 +78,30 @@ export const LoginProvider: React.FC<PropsWithChildren> = ({ children }) => {
       setLoading(false);
     }
   }
+
+  function formReducer(
+    state: StateLogin,
+    action: { chave: string; valor: string }
+  ): StateLogin {
+    switch (action.chave) {
+      case "username":
+        return {
+          ...state,
+          [action.chave]: action.valor,
+        };
+        break;
+
+      default:
+        break;
+    }
+    return state;
+  }
+
   return (
     <LoginContext.Provider
       value={{
-        username,
-        setUsername,
-        password,
-        setPassword,
+        stateLogin,
+        formReducer,
         token,
         setToken,
         loading,
