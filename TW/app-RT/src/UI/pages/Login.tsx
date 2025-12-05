@@ -8,7 +8,7 @@ const Login = () => {
       {loading ? (
         <p className="text-sky-50 font-extrabold">Carregando...</p>
       ) : (
-        <FormLogin controlsForm />
+        <FormLogin {...controlsForm} />
       )}
     </div>
   );

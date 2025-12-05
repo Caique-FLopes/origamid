@@ -6,10 +6,8 @@ type IFormLogin = Omit<ILoginContext, "loading">;
 
 const FormLogin: React.FC<IFormLogin> = ({
   handleLogin,
-  username,
-  setUsername,
-  password,
-  setPassword,
+  stateLogin,
+  dispatchLogin,
 }) => {
   return (
     <form
@@ -22,8 +20,21 @@ const FormLogin: React.FC<IFormLogin> = ({
         type="text"
         id="username"
         placeholder="Usuário"
-        value={username}
-        onChange={({ target }) => setUsername(target.value)}
+        value={stateLogin.username}
+        onChange={({ target }: React.ChangeEvent<HTMLInputElement>) =>
+          dispatchLogin({ key: target.id, value: target.value })
+        }
+      />
+      <InputForm
+        htmlFor="password"
+        label="Senha:"
+        type="password"
+        id="password"
+        placeholder="Senha"
+        value={stateLogin.password}
+        onChange={({ target }: React.ChangeEvent<HTMLInputElement>) =>
+          dispatchLogin({ key: target.id, value: target.value })
+        }
       />
       <button
         type="submit"
