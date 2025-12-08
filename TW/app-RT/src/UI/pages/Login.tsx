@@ -1,8 +1,8 @@
-import { useLoginContext } from "../../contexts/LoginContext";
+import { useAuth } from "../../hooks/useAuthContext";
 import FormLogin from "../templates/FormLogin";
 
 const Login = () => {
-  const { loading, ...controlsForm } = useLoginContext();
+  const { loading, ...controlsForm } = useAuth();
   return (
     <div className="h-screen flex justify-center items-center">
       {loading ? (

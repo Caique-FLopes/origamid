@@ -1,14 +1,23 @@
 import React from "react";
-import type { ILoginContext } from "../../contexts/LoginContext";
+import type { ILoginContext } from "../../contexts/AuthProvider";
 import InputForm from "../molecules/InputForm";
+import { useNavigate } from "react-router-dom";
+import Button from "../atomns/Button";
 
 type IFormLogin = Omit<ILoginContext, "loading">;
 
 const FormLogin: React.FC<IFormLogin> = ({
-  handleLogin,
+  login,
   stateLogin,
   dispatchLogin,
 }) => {
+  const navigate = useNavigate();
+  async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const token = await login(stateLogin);
+    if (token) navigate("/perfil");
+  }
+
   return (
     <form
       onSubmit={handleLogin}
@@ -36,12 +45,7 @@ const FormLogin: React.FC<IFormLogin> = ({
           dispatchLogin({ key: target.id, value: target.value })
         }
       />
-      <button
-        type="submit"
-        className="border-2 border-sky-800 bg-sky-400 px-1 py-2 rounded-3xl shadow-inner shadow-sky-200 hover:bg-sky-300 hover:shadow-sky-50 hover:border-sky-400 disabled:bg-sky-300 disabled:cursor-not-allowed"
-      >
-        Entrar
-      </button>
+      <Button>Entrar</Button>
     </form>
   );
 };

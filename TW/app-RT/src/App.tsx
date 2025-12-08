@@ -1,19 +1,25 @@
 import { Routes, Route } from "react-router-dom";
-import { LoginProvider } from "./contexts/LoginContext";
+import { AuthProvider } from "./contexts/AuthProvider";
 import Login from "./UI/pages/Login";
 import Perfil from "./UI/pages/Perfil";
 import Produtos from "./UI/pages/Produtos";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   return (
     <>
-      <LoginProvider>
+      <AuthProvider>
         <Routes>
-          <Route index element={<Login />} />
-          <Route index path="/perfil" element={<Perfil />} />
-          <Route path="/produtos" element={<Produtos />}></Route>
+          {/* page login */}
+          <Route path="/login" element={<Login />} />
+
+          {/* page login */}
+          <Route element={<ProtectedRoute />}>
+            <Route index path="/perfil" element={<Perfil />} />
+            <Route path="/produtos" element={<Produtos />}></Route>
+          </Route>
         </Routes>
-      </LoginProvider>
+      </AuthProvider>
     </>
   );
 }

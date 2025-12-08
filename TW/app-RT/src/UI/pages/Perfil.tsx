@@ -1,9 +1,11 @@
 import React from "react";
 import { jwtDecode } from "jwt-decode";
-import { useLoginContext } from "../../contexts/LoginContext";
+import { useAuth } from "../../hooks/useAuthContext.ts";
 
 const Perfil = () => {
-  const { token, loading, setLoading } = useLoginContext();
+  const { validateToken, setLoading, setUser, user } = useAuth();
+
+  const token = validateToken();
   if (!token) return null;
 
   const userToken = jwtDecode(token);
@@ -12,11 +14,12 @@ const Perfil = () => {
     async function teste() {
       try {
         setLoading(true);
-        console.log(userToken);
+
         const res = await fetch(
           `https://fakestoreapi.com/users/${userToken.sub}`
         );
         const json = await res.json();
+        setUser(json);
       } catch (error) {
         console.error(error);
       } finally {
@@ -26,7 +29,11 @@ const Perfil = () => {
     teste();
   }, []);
 
-  return <div>Perfil</div>;
+  return (
+    <div>
+      <h1 className="text-4xl font-semibold">Olá, {user?.name.firstname}</h1>
+    </div>
+  );
 };
 
 export default Perfil;
