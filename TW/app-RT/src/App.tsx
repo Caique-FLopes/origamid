@@ -15,7 +15,8 @@ function App() {
 
           {/* page login */}
           <Route element={<ProtectedRoute />}>
-            <Route index path="/perfil" element={<Perfil />} />
+            <Route index element={<Produtos />} />
+            <Route path="/perfil" element={<Perfil />} />
             <Route path="/produtos" element={<Produtos />}></Route>
           </Route>
         </Routes>
